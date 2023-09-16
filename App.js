@@ -1,20 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react'
+import { Home, Students } from './src/screens'
+import { useFonts } from 'expo-font'
+import fonts from './src/global/fonts'
+
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  const [fontsLoaded] = useFonts(fonts)
+  const [cursoSelected, setCursoSelected] = useState('')
+
+  if(!fontsLoaded) {
+    return null
+  }
+  
+  return cursoSelected ? (
+  <Students curso={cursoSelected} /> )
+  : (<Home setCursoSelected={setCursoSelected}/>
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
