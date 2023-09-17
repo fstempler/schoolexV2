@@ -1,12 +1,13 @@
-import { View, Text, FlatList } from 'react-native'
+import { View, Text, FlatList, TouchableOpacity } from 'react-native'
 import React, { useState, useEffect } from 'react'
-import studentsData from '../../data/students' // Cambié el nombre de la variable original
+import studentsData from '../../data/students' 
 import styles from './Students.style'
 import { Header, SearchInput } from '../../Components'
 
-const Students = ({ curso }) => {
+const Students = ({ navigation, route }) => {
   const [arrStudents, setArrStudents] = useState([])
   const [keyword, setKeyword] = useState('')
+  const { curso } = route.params
 
   useEffect(() => {
     if (curso) {
@@ -23,21 +24,21 @@ const Students = ({ curso }) => {
       )
       setArrStudents(studentsFilteredByName)
     }
-  }, [curso, keyword])
+  }, [curso, keyword]);  
 
   return (
     <View style={styles.container}>
-      <Header title={curso} />
+      {/* <Header title={curso} /> */}
       <SearchInput onSearch={setKeyword} />
       <View style={styles.listContainer}>
         <FlatList
           data={arrStudents}
           renderItem={({ item }) => (
-            <View style={styles.textContainer}>
+            <TouchableOpacity style={styles.textContainer} onPress={() => navigation.navigate('StudentProfile', {student: item})}>
               <Text style={styles.text}>
                 {item.sexicon} {item.name} {item.lastname}
               </Text>
-            </View>
+            </TouchableOpacity>
           )}
           keyExtractor={(item) => item.id}
         />
