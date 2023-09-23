@@ -1,6 +1,6 @@
-import { NavigationContainer } from "@react-navigation/native";
+
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Home, StudentProfile, Students } from '../screens';
+import { Home, StudentProfile, Students, ExtraHours } from '../screens';
 import { Header } from "../Components";
 import { View, TouchableOpacity } from 'react-native'
 import { AntDesign } from '@expo/vector-icons';
@@ -16,6 +16,8 @@ function getTitle(route) {
         return 'Alumnos 📚';
       case 'StudentProfile':
         return 'Alumno 🎓';
+      case 'ExtraHours':
+        return 'Clases Especiales';  
       default:
         return 'Otra cosa';
     }
@@ -23,7 +25,7 @@ function getTitle(route) {
 
 function StackNavigator() {
     return (
-        <NavigationContainer>
+        
       <Stack.Navigator
         initialRouteName="Home"
         screenOptions={({ route, navigation }) => ({
@@ -32,14 +34,28 @@ function StackNavigator() {
             if (route.name === 'Home') {
               
               return (
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingHorizontal: 20, backgroundColor: colors.quinary, borderBottomColor: colors.tertiary, borderBottomWidth: 1, paddingTop: 30 }}>
+                <View style={{ flexDirection: 'row', 
+                justifyContent: 'space-between', 
+                alignItems: 'center', 
+                paddingHorizontal: 20, 
+                backgroundColor: colors.quinary, 
+                borderBottomColor: colors.tertiary, 
+                borderBottomWidth: 1, 
+                paddingTop: 30 }}>
                   <Header title={getTitle(route)} />
                 </View>
               );
             }
             
             return (
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingHorizontal: 20, backgroundColor: colors.quinary, borderBottomColor: colors.tertiary, borderBottomWidth: 1, paddingTop: 30 }}>
+              <View style={{ flexDirection: 'row', 
+              justifyContent: 'space-between', 
+              alignItems: 'center', 
+              paddingHorizontal: 20, 
+              backgroundColor: colors.quinary, 
+              borderBottomColor: colors.tertiary, 
+              borderBottomWidth: 1, 
+              paddingTop: 30 }}>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
                   <AntDesign name="back" size={24} color="white" />
                 </TouchableOpacity>
@@ -51,9 +67,10 @@ function StackNavigator() {
       >
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Students" component={Students} />
-        <Stack.Screen name="StudentProfile" component={StudentProfile} />
+        <Stack.Screen name="StudentProfile" component={StudentProfile} /> 
+        <Stack.Screen name="ExtraHours" component={ExtraHours}/>
       </Stack.Navigator>
-    </NavigationContainer>
+    
     )
 }
 
