@@ -12,6 +12,9 @@ export default styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',        
     },
+    nameContainer: {
+        width: '50%',
+    },  
     name: {
         fontSize: 20,        
         fontFamily: 'LatoRegular',

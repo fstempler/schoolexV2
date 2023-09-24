@@ -4,12 +4,12 @@
   import { FlatList, View } from 'react-native'
   import cursos from '../../data/cursos'
   import React from 'react'
-  import styles from './Home.style'
+  import styles from './Home.style'  
 
   const Home = ({setCursoSelected, navigation}) => {
     return (
       <View style={styles.container}>
-        {/* <Header title={'Cursos 🏫'}/> */}
+        {/* <Header title={'Cursos 🏫'}/> */}        
         <FlatList
         style={styles.list}
         data={cursos}

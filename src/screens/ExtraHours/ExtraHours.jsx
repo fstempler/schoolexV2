@@ -4,11 +4,15 @@ import styles from './ExtraHours.style';
 import students from '../../data/students';
 import StudentItem from './components/StudentItem';
 import { Header } from '../../Components';
+import { useSelector } from 'react-redux';
 
 const ExtraHours = () => {
   const filteredStudents = students.filter((student) => {
     return student.subjects.some((subject) => subject.grade < 7);
   });
+
+  
+  console.log(filteredStudents)
 
   const renderItem = ({ item }) => <StudentItem student={item} />;
 

@@ -67,8 +67,7 @@ function StackNavigator() {
       >
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Students" component={Students} />
-        <Stack.Screen name="StudentProfile" component={StudentProfile} /> 
-        <Stack.Screen name="ExtraHours" component={ExtraHours}/>
+        <Stack.Screen name="StudentProfile" component={StudentProfile} />         
       </Stack.Navigator>
     
     )

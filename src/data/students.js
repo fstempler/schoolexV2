@@ -45,7 +45,7 @@ export default [
             {name: 'Lengua', grade: 9},
             {name: 'Cs. Sociales', grade: 8},
             {name: 'Matematica', grade: 7},
-            {name: 'Naturales', grade: 7},
+            {name: 'Naturales', grade: 10},
             {name: 'Musica', grade: 10},
             {name: 'EdFisica', grade: 8}, 
         ],        
@@ -204,7 +204,7 @@ export default [
         ],        
     },
     {
-        id:17,
+        id:46,
         name: 'Carola',
         lastname: 'Traverso',
         age: '6',

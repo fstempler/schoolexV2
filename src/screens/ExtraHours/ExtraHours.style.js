@@ -8,8 +8,7 @@ export default styles = StyleSheet.create({
         display: 'flex',
         alignItems:'left',   
         paddingTop: 50,
+        paddingBottom: 50,
     },
-    list: {
-        marginTop: 50,                
-    }
+    
 })

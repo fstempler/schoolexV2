@@ -1,6 +1,5 @@
 import { Text, View } from 'react-native'
 import styles from './Header.style'
-import { AntDesign } from '@expo/vector-icons';
 
 import React from 'react'
 
