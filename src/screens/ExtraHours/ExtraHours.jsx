@@ -1,18 +1,20 @@
 import React from 'react';
 import { View, FlatList } from 'react-native';
 import styles from './ExtraHours.style';
-import students from '../../data/students';
 import StudentItem from './components/StudentItem';
 import { Header } from '../../Components';
 import { useSelector } from 'react-redux';
 
-const ExtraHours = () => {
-  const filteredStudents = students.filter((student) => {
-    return student.subjects.some((subject) => subject.grade < 7);
-  });
 
+const ExtraHours = () => {
   
-  console.log(filteredStudents)
+
+  const filteredStudents = useSelector((state) => {
+    return state.studentData.filter((student) => {
+      return student.subjects.some((subject) => subject.grade < 7);
+    });
+  });  
+  
 
   const renderItem = ({ item }) => <StudentItem student={item} />;
 
