@@ -3,36 +3,32 @@ import React, { useState, useEffect } from 'react'
 import studentsData from '../../data/students' 
 import styles from './Students.style'
 import { Header, SearchInput } from '../../Components'
+import { useSelector } from 'react-redux'
+import { useGetStudentsByCursoQuery } from '../../services/classApi'
 
-const Students = ({ navigation, route }) => {
+const Students = ({ navigation }) => {
+  const curso = useSelector(state => state.class.cursoSelected)
   const [arrStudents, setArrStudents] = useState([])
   const [keyword, setKeyword] = useState('')
-  const { curso } = route.params
+  const { data, isLoading } = useGetStudentsByCursoQuery(curso)  
 
   useEffect(() => {
-    if (curso) {
-      const studentsFilteredByCurso = studentsData.filter(
-        (student) => student.curso === curso
-      )
-      const studentsFilteredByName = studentsFilteredByCurso.filter((student) =>
+    
+    if (data) {      
+      const studentsFilteredByName = data.filter((student) =>
         student.name.includes(keyword)
-      )
-      setArrStudents(studentsFilteredByName)
-    } else {
-      const studentsFilteredByName = studentsData.filter((student) =>
-        student.name.includes(keyword)
-      )
-      setArrStudents(studentsFilteredByName)
-    }
-  }, [curso, keyword]);  
+      )      
+    } 
+  }, []);  
 
   return (
     <View style={styles.container}>
       {/* <Header title={curso} /> */}
       <SearchInput onSearch={setKeyword} />
       <View style={styles.listContainer}>
-        <FlatList
-          data={arrStudents}
+        {!isLoading && (
+          <FlatList
+          data={Object.values(data)}
           renderItem={({ item }) => (
             <TouchableOpacity style={styles.textContainer} onPress={() => navigation.navigate('StudentProfile', {student: item})}>
               <Text style={styles.text}>
@@ -42,6 +38,8 @@ const Students = ({ navigation, route }) => {
           )}
           keyExtractor={(item) => item.id}
         />
+        )}
+        
       </View>
     </View>
   )

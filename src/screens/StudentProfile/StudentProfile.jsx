@@ -4,11 +4,17 @@ import styles from './StudentProfile.style';
 import { Entypo } from '@expo/vector-icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { increment, decrement, updateGrade, initializeGrades } from '../../features/counter/counterSlice';
+import { addItem, selectStudent } from '../../features/specialClass/specialClassSlice';
 
 const StudentProfile = ({ route }) => {
   const { student } = route.params;
   const dispatch = useDispatch();
   const subjectGrades = useSelector((state) => state.counter);
+
+  const handleAddToSpecialClass = (subjectName, grade) => {
+    dispatch(addItem(student));
+    dispatch(selectStudent(student.id));
+  }
 
   // Utiliza useEffect para inicializar las calificaciones cuando el componente se monta
   useEffect(() => {
@@ -25,11 +31,7 @@ const StudentProfile = ({ route }) => {
 
   const handleDecrement = (subjectName) => {
     dispatch(decrement({ subject: subjectName }));
-  };
-
-  const handleUpdateGrade = (subjectName, newGrade) => {
-    dispatch(updateGrade({ subject: subjectName, newValue: newGrade }));
-  };
+  }; 
 
   return (
     <View style={styles.container}>
@@ -55,7 +57,7 @@ const StudentProfile = ({ route }) => {
             </Pressable>
             <Pressable 
               style={styles.counterButtons}
-              onPress={() => handleUpdateGrade(subject.name, subjectGrades[subject.name] || subject.grade)}>
+              onPress={handleAddToSpecialClass}>
               <Entypo name="check" size={24} color="#fff" />
             </Pressable>
           </View>

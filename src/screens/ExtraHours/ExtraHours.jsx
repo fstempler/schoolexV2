@@ -7,13 +7,8 @@ import { useSelector } from 'react-redux';
 
 
 const ExtraHours = () => {
-  
+  const specialClass = useSelector(state => state.specialClass.items)
 
-  const filteredStudents = useSelector((state) => {
-    return state.studentData.filter((student) => {
-      return student.subjects.some((subject) => subject.grade < 7);
-    });
-  });  
   
 
   const renderItem = ({ item }) => <StudentItem student={item} />;
@@ -24,8 +19,8 @@ const ExtraHours = () => {
       <Header title={'Clases de Repaso'}/>  
       <View>
         <FlatList
-          data={filteredStudents}
-          keyExtractor={(item) => item.id.toString()}
+          data={specialClass}
+          keyExtractor={(item) => item.id}
           renderItem={renderItem}
         />
       </View>

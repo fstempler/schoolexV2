@@ -2,9 +2,18 @@ import React from 'react';
 import { View, Text, Pressable } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import styles from './Studentitem.style';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectStudent, removeItem } from '../../../features/specialClass/specialClassSlice';
+
 
 const StudentItem = ({ student }) => {
-  // console.log('Datos del estudiante: ', student);
+  const selectedStudentId = useSelector(state => state.specialClass.selectedStudent);
+  const dispatch = useDispatch();
+
+  const handleStudentPress = () => {
+    dispatch(removeItem());    
+  }
+
 
   return (
     <View style={styles.container}>
@@ -26,7 +35,7 @@ const StudentItem = ({ student }) => {
         ))}
       </View>
       <View>
-        <Pressable >
+        <Pressable onPress={handleStudentPress}>
           <MaterialCommunityIcons name="face-man-profile" size={24} color="#fff" />
         </Pressable>
       </View>
