@@ -1,11 +1,10 @@
 
   // import { Header }  from '../../Components'
   import { CategoryItem } from './components'
-  import { FlatList, View } from 'react-native'
-  import cursos from '../../data/cursos'
+  import { FlatList, View } from 'react-native'  
   import React from 'react'
   import styles from './Home.style'  
-import { useGetCursosQuery } from '../../services/classApi'
+  import { useGetCursosQuery } from '../../services/classApi'
 
   const Home = ({setCursoSelected, navigation}) => {
     const {data, isLoading} = useGetCursosQuery()

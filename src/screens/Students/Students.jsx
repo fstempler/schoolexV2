@@ -1,8 +1,7 @@
 import { View, Text, FlatList, TouchableOpacity } from 'react-native'
 import React, { useState, useEffect } from 'react'
-import studentsData from '../../data/students' 
 import styles from './Students.style'
-import { Header, SearchInput } from '../../Components'
+import { SearchInput } from '../../Components'
 import { useSelector } from 'react-redux'
 import { useGetStudentsByCursoQuery } from '../../services/classApi'
 
@@ -11,19 +10,19 @@ const Students = ({ navigation }) => {
   const [arrStudents, setArrStudents] = useState([])
   const [keyword, setKeyword] = useState('')
   const { data, isLoading } = useGetStudentsByCursoQuery(curso)  
+  
 
   useEffect(() => {
-    
-    if (data) {      
-      const studentsFilteredByName = data.filter((student) =>
+    if (data) {
+      const studentsFilteredByName = Object.values(data).filter((student) =>
         student.name.includes(keyword)
-      )      
-    } 
-  }, []);  
+      );
+      setArrStudents(studentsFilteredByName);
+    }
+  }, [data, keyword]);
 
   return (
-    <View style={styles.container}>
-      {/* <Header title={curso} /> */}
+    <View style={styles.container}>      
       <SearchInput onSearch={setKeyword} />
       <View style={styles.listContainer}>
         {!isLoading && (
