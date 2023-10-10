@@ -7,7 +7,7 @@ import { setCursoSelected } from '../../../../features/school/school.Slice'
 
 const CategoryItem = ({curso, navigation}) => {
   const dispatch = useDispatch()
-  return (
+  return (    
     <Pressable onPress={ () => {
       dispatch(setCursoSelected(curso))
       navigation.navigate('Students', { curso })}}>

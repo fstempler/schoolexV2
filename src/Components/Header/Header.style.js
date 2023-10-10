@@ -3,7 +3,7 @@ import { colors } from '../../constants/colors'
 
 export default styles = StyleSheet.create({
     container: {
-        backgroundColor: colors.quinary,
+        backgroundColor: colors.primary,
         height: 80,
         width:'100%',
         justifyContent: 'center',
@@ -11,7 +11,7 @@ export default styles = StyleSheet.create({
     },
     text: {
         fontSize: 40,
-        color: colors.tertiary,
-        fontFamily: 'Schoolbell',
+        color: colors.quinary,
+        fontFamily: 'LatoRegular',
     }
 })

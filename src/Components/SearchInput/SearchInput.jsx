@@ -17,12 +17,12 @@ const SearchInput = ({onSearch}) => {
   
     return (
       <View style={styles.container}>
-        <TextInput style={styles.input} value={value} onChangeText={setValue} placeholder='Buscar alumno...' placeholderTextColor='#fff'/>
+        <TextInput style={styles.input} value={value} onChangeText={setValue} placeholder='Buscar alumno...' placeholderTextColor='#393E41'/>
         <Pressable onPress={search} style={styles.icon}>
-            <MaterialCommunityIcons name="account-search-outline" size={30} color="white" />
+            <MaterialCommunityIcons name="account-search-outline" size={30} color="#393E41" />
         </Pressable>
         <Pressable onPress={clearInput} style={styles.icon}>
-            <MaterialIcons name="clear" size={30} color="white" />
+            <MaterialIcons name="clear" size={30} color="#393E41" />
         </Pressable>
       </View>
     )

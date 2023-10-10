@@ -4,7 +4,7 @@ import { colors } from "../../constants/colors";
 export default styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colors.quinary,        
+        backgroundColor: colors.primary,        
     },
     listContainer: {
         paddingHorizontal: 15,
@@ -19,8 +19,8 @@ export default styles = StyleSheet.create({
     },
     text: {        
         borderWidth: 1,        
-        borderColor: '#fff',
-        color: "#fff",
+        borderColor: colors.quinary,
+        color: colors.quinary,
         fontSize: 20,
         fontFamily: 'LatoRegular', 
         textAlign: 'center',

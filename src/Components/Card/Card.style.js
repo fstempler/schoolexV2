@@ -3,7 +3,7 @@ import { colors } from "../../constants/colors"
 
 export default styles = StyleSheet.create({
     container: {
-        backgroundColor: colors.quinary,
+        backgroundColor: colors.secondary,
         shadowColor: '#000',
         shadowOffset: {height: 5, width: 3},
         elevation: 10, 
@@ -11,9 +11,9 @@ export default styles = StyleSheet.create({
         shadowRadius: 1,
         borderRadius: 15,
         borderWidth: 1,
-        borderColor: colors.tertiary,            
+        borderColor: colors.tertiary,                    
     },
     children: {
-        color: '#fff',
+        color: colors.quaternary,
     }    
 })

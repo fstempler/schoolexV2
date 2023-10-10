@@ -7,7 +7,7 @@ export default styles = StyleSheet.create({
         flexDirection: 'row',
         padding: 20,
         borderBottomWidth: 1,
-        borderBottomColor: colors.tertiary,        
+        borderBottomColor: colors.quinary,        
         width: '100%',
         alignItems: 'center',
         justifyContent: 'space-between',        
@@ -18,7 +18,7 @@ export default styles = StyleSheet.create({
     name: {
         fontSize: 20,        
         fontFamily: 'LatoRegular',
-        color: colors.tertiary,
+        color: colors.quinary,
     },
     details: {
         flex: 1,
@@ -30,15 +30,15 @@ export default styles = StyleSheet.create({
         padding: 10,        
     },
     detailsStudent: {
-        color: colors.tertiary,
+        color: colors.quinary,
     },
     course: {
-        color: '#fff',
+        color: colors.quinary,
     },
     subject: {
-        color: '#fff',
+        color: colors.quinary,
     },
     grade: {
-        color: '#fff',
+        color: colors.quinary,
     },
 })

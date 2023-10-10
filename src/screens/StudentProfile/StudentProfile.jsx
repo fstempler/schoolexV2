@@ -43,22 +43,12 @@ const StudentProfile = ({ route }) => {
       {student.subjects.map((subject) => (
         <View style={styles.subjectContainer} key={subject.name}>
           <Text style={styles.subject}>{subject.name}: </Text>
-          <View style={styles.counterContainer}>
-            <Pressable
-              style={styles.counterButtons}
-              onPress={() => handleDecrement(subject.name)}>
-              <Entypo name="minus" size={24} color="#fff" />
-            </Pressable>
-            <Text style={styles.grade}>{subjectGrades[subject.name] || 0}</Text>
-            <Pressable
-              style={styles.counterButtons}
-              onPress={() => handleIncrement(subject.name)}>
-              <Entypo name="plus" size={24} color="#fff" />
-            </Pressable>
+          <View style={styles.counterContainer}>            
+            <Text style={styles.grade}>{subjectGrades[subject.name] || 0}</Text>            
             <Pressable 
-              style={styles.counterButtons}
+              style={styles.addBtn}
               onPress={handleAddToSpecialClass}>
-              <Entypo name="check" size={24} color="#fff" />
+              <Text><Entypo name="plus" size={12} color="#393E41" /> Clase de Repaso</Text>
             </Pressable>
           </View>
         </View>

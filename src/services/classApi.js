@@ -14,12 +14,26 @@ export const classApi = createApi({
         getStudentsByCurso: builder.query({
             query: curso => 
             `students.json?orderBy="curso"&equalTo="${curso}"`,
-        })
-    })
+        }),   
+        getProfileImage: builder.query({
+            query: localId => `profileImages/${localId}.json`,
+        }),
+        postProfileImage: builder.mutation({
+            query: ({image, localId}) => ({
+                url:`profileImages/${localId}.json`,
+                method: 'PUT',
+                body: {
+                    image: image,
+                },
+            }),
+        }),   
+    }),
 })
 
 export const {
     useGetCursosQuery,
     useGetStudentsQuery, 
-    useGetStudentsByCursoQuery,
+    useGetStudentsByCursoQuery,    
+    useGetProfileImageQuery,
+    usePostProfileImageMutation,
 } = classApi

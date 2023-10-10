@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Pressable } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import styles from './Studentitem.style';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectStudent, removeItem } from '../../../features/specialClass/specialClassSlice';
@@ -36,7 +36,7 @@ const StudentItem = ({ student }) => {
       </View>
       <View>
         <Pressable onPress={handleStudentPress}>
-          <MaterialCommunityIcons name="face-man-profile" size={24} color="#fff" />
+          <Ionicons name="person-remove" size={24} color="#393E41" />
         </Pressable>
       </View>
     </View>

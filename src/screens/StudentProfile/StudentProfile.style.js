@@ -5,7 +5,7 @@ import { colors } from "../../constants/colors";
 export default styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colors.quinary, 
+        backgroundColor: colors.primary, 
         display: 'flex',
         alignItems:'left',                
     },
@@ -13,7 +13,7 @@ export default styles = StyleSheet.create({
         marginTop: 50,                
     },
     text: {
-        color: colors.tertiary,
+        color: colors.quinary,
         fontSize: 24,
         fontFamily: 'LatoRegular',
         paddingVertical: 10,
@@ -26,7 +26,7 @@ export default styles = StyleSheet.create({
         marginVertical: 15,
     },
     subject: {
-        color: colors.tertiary,
+        color: colors.quinary,
         textAlign: 'left',
         fontFamily: 'LatoRegular',
         fontSize: 18,        
@@ -42,7 +42,17 @@ export default styles = StyleSheet.create({
     grade: {
         fontFamily: 'LatoRegular',
         fontSize: 24,
-        color: colors.tertiary,
+        color: colors.quinary,
+    },
+    addBtn:{
+        fontFamily: 'LatoRegular',
+        borderWidth: 1,
+        borderRadius: 5,
+        borderColor: colors.quinary,
+        padding: 3,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginLeft: 10,
     }
 
     

@@ -1,5 +1,6 @@
 
   // import { Header }  from '../../Components'
+  import { Text } from 'react-native'
   import { CategoryItem } from './components'
   import { FlatList, View } from 'react-native'  
   import React from 'react'
@@ -11,6 +12,9 @@
     return (
       <View style={styles.container}>
         {/* <Header title={'Cursos 🏫'}/> */}        
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>Selecciona tu curso a cargo:</Text>
+        </View>
         <FlatList
         style={styles.list}
         data={data}
@@ -21,10 +25,7 @@
         />)}        
         
       />
-      </View>
-
-      
-
+      </View>     
 
     )
   }

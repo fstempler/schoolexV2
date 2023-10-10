@@ -14,9 +14,9 @@ export default styles = StyleSheet.create({
         minHeight: 60,
     },
     text: {
-        color: colors.tertiary,
-        fontFamily: 'Schoolbell',
-        fontSize: 25,
+        color: colors.quinary,
+        fontFamily: 'LatoRegular',
+        fontSize: 20,
         paddingHorizontal: 60,
     }
 })

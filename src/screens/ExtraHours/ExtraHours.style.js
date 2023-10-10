@@ -4,7 +4,7 @@ import { colors } from "../../constants/colors";
 export default styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colors.quinary, 
+        backgroundColor: colors.primary, 
         display: 'flex',
         alignItems:'left',   
         paddingTop: 50,
