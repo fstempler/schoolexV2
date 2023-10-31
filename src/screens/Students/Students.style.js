@@ -3,8 +3,11 @@ import { colors } from "../../constants/colors";
 
 export default styles = StyleSheet.create({
     container: {
+        flex: 1,        
+    },
+    imageBackground:{
         flex: 1,
-        backgroundColor: colors.primary,        
+        justifyContent: 'center',
     },
     listContainer: {
         paddingHorizontal: 15,
@@ -15,12 +18,13 @@ export default styles = StyleSheet.create({
     textContainer: {
         flex: 1,
         flexDirection: 'row',
-        justifyContent: 'space-around',        
+        justifyContent: 'space-around',                
     },
     text: {        
         borderWidth: 1,        
+        backgroundColor: '#4A306D95',
         borderColor: colors.quinary,
-        color: colors.quinary,
+        color: '#fff',
         fontSize: 20,
         fontFamily: 'LatoRegular', 
         textAlign: 'center',

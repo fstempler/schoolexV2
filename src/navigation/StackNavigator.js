@@ -38,7 +38,7 @@ function StackNavigator() {
                 justifyContent: 'space-between', 
                 alignItems: 'center', 
                 paddingHorizontal: 20, 
-                backgroundColor: colors.primary, 
+                backgroundColor: colors.quinary, 
                 borderBottomColor: colors.tertiary, 
                 borderBottomWidth: 1, 
                 paddingTop: 30 }}>
@@ -52,12 +52,12 @@ function StackNavigator() {
               justifyContent: 'space-between', 
               alignItems: 'center', 
               paddingHorizontal: 20, 
-              backgroundColor: colors.primary, 
+              backgroundColor: colors.quinary, 
               borderBottomColor: colors.tertiary, 
               borderBottomWidth: 1, 
               paddingTop: 30 }}>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
-                  <AntDesign name="back" size={24} color="#393E41" />
+                  <AntDesign name="back" size={24} color="#fff" />
                 </TouchableOpacity>
                 <Header title={getTitle(route)} />
               </View>

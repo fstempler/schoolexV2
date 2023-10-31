@@ -11,12 +11,11 @@ export const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        setUser: (state, action) => {                        
-            console.log(action.payload.data.email)            
+        setUser: (state, action) => {                                    
             return {
-                user: action.payload.data.email,                
-                token: action.payload.data.idToken,                
-                localId: action.payload.data.localId,
+                user: action.payload.email,                
+                token: action.payload.idToken,                
+                localId: action.payload.localId,
             }
         },
         clearUser: () => {

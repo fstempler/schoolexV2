@@ -4,20 +4,22 @@ import { colors } from "../../constants/colors";
 export default styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         alignItems: 'center',
-        width: '90%',
+        width: '100%',
         paddingTop: 10,
+        paddingHorizontal: 10,
+        backgroundColor: colors.quinary,
     },
     icon: {
         marginHorizontal: 5,
     },
     input: {
-        color: colors.quinary,
-        backgroundColor: colors.primary,        
+        color: '#fff',
+        backgroundColor: colors.quinary,        
         padding: 10,
         borderBottomWidth: 1,
-        borderColor: colors.quinary,
+        borderColor: colors.primary,
         width: '80%',
         fontSize: 20,
         margin: 10,

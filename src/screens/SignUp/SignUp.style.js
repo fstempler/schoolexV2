@@ -3,51 +3,53 @@ import { colors } from '../../constants/colors';
 
 export default styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor:'#d6d6d6',
-        justifyContent: 'center',
-        alignItems: 'center',
-        shadowColor: "#000",
-        shadowOffset: {
-	            width: 0,
-	            height: 9,
-        },
-        shadowOpacity: 0.48,
-        shadowRadius: 11.95,
-        elevation: 18,
+        flex: 1,        
+        justifyContent: 'flex-end',                      
     },
-    loginContainer: {
-        backgroundColor: '#FFDA47',
-        width: '80%',
-        paddingHorizontal: 20,
+    imageBackground:{
+        flex: 1,
+        justifyContent: 'center',
+    },
+    imageContainer:{             
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 5,
-        borderWidth: 1,
-        borderColor: "#FFCC00",
+        marginBottom: 100,
+        borderRadius: 100,        
+    },
+    logo:{
+        width: 300,
+        height: 300,     
+        borderRadius: 150,   
+    },
+    loginContainer: {        
+        backgroundColor: '#0e273c',
+        width: '100%',
+        height: '50%',
+        paddingHorizontal: 20,
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
     },
     title:{
         margin: 10,
         fontSize: 18,
         fontFamily: 'LatoRegular',
-        color: '#393E41',
+        color: '#ffffff',
     },
     inputEmail: {
         width: '95%',
-        backgroundColor: '#FFE270',
-        borderWidth: 1,
-        borderColor: '#FFCC00',
+        backgroundColor: '#4a306d',        
         height: 30,
         borderRadius: 5,
         marginVertical: 15,
         justifyContent: 'center',
         alignItems: 'center',
         paddingLeft: 4,
+        color:"#ffffff",
     },
     registerButton:{
-        backgroundColor: '#FFFBEB',
-        borderWidth: 1,
-        borderColor: '#FFCC00',
+        backgroundColor: '#FFFBEB',      
         width:"50%",
         height:50,
         borderRadius:5,
@@ -65,16 +67,10 @@ export default styles = StyleSheet.create({
         marginBottom: 5,
         fontFamily: 'LatoRegular',
         fontSize: 12,
-        color: '#393E41',
-    },
-    checkBoxContainer:{
-        flexDirection:'row' ,        
-        marginBottom: 30,
-    },
+        color: '#e8d7f1',
+    },    
     loginButton:{
-        backgroundColor: '#FFFBEB',
-        borderWidth: 1,
-        borderColor: '#FFCC00',
+        backgroundColor: '#FFFBEB',        
         width:"50%",
         height:30,
         borderRadius:5,
@@ -83,7 +79,7 @@ export default styles = StyleSheet.create({
         alignItems: 'center',        
     },
     loginSectionContainer:{
-        marginTop: 20,
+        marginTop: 30,
         width: '80%',
         paddingHorizontal: 20,
         justifyContent: 'center',
@@ -93,6 +89,8 @@ export default styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: "#393E41",        
         width: '100%',
-    }
+        marginTop: 20,
+    },
+    
     
 })

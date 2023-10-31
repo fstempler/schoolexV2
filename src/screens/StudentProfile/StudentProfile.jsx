@@ -1,10 +1,12 @@
-import { View, Text, Pressable } from 'react-native';
+import { View, Text, Pressable, ImageBackground } from 'react-native';
 import React, { useEffect } from 'react';
 import styles from './StudentProfile.style';
 import { Entypo } from '@expo/vector-icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { increment, decrement, updateGrade, initializeGrades } from '../../features/counter/counterSlice';
 import { addItem, selectStudent } from '../../features/specialClass/specialClassSlice';
+import { useGetStudentsByCursoQuery } from '../../services/classApi'
+import background from '../../../assets/back2.jpg'
 
 const StudentProfile = ({ route }) => {
   const { student } = route.params;
@@ -34,9 +36,16 @@ const StudentProfile = ({ route }) => {
   }; 
 
   return (
+    <ImageBackground source={background} 
+    resizeMode='cover'
+    style={styles.imageBackground}>
     <View style={styles.container}>
-      <Text style={styles.text}>Nombre: {student.name}</Text>
-      <Text style={styles.text}>Apellido: {student.lastname}</Text>
+
+      <View style={styles.nameContainer}>
+        <Text style={styles.textName}>{student.name}</Text>
+        <Text style={styles.textName}>{student.lastname}</Text>
+      </View>
+      
       <Text style={styles.text}>Género: {student.sex} {student.sexicon}</Text>
       <Text style={styles.text}>Curso: {student.curso}</Text>
 
@@ -54,6 +63,7 @@ const StudentProfile = ({ route }) => {
         </View>
       ))}
     </View>
+    </ImageBackground>
   );
 };
 

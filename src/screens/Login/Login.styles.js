@@ -3,53 +3,56 @@ import { colors } from '../../constants/colors';
 
 export default styles = StyleSheet.create({
     container: {
+        flex: 1,        
+        justifyContent: 'flex-end',                      
+    },
+    imageBackground:{
         flex: 1,
-        backgroundColor:'#d6d6d6',
+        justifyContent: 'center',
+    },
+    imageContainer:{             
         justifyContent: 'center',
         alignItems: 'center',
-        shadowColor: "#000",
-        shadowOffset: {
-	            width: 0,
-	            height: 9,
-        },
-        shadowOpacity: 0.48,
-        shadowRadius: 11.95,
-        elevation: 18,
+        marginBottom: 100,
+        borderRadius: 100,        
     },
-    loginContainer: {
-        backgroundColor: '#FFDA47',
-        width: '80%',
+    logo:{
+        width: 300,
+        height: 300,     
+        borderRadius: 150,   
+    },
+    loginContainer: {        
+        backgroundColor: '#0e273c',
+        width: '100%',
+        height: '50%',
         paddingHorizontal: 20,
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignItems: 'center',
-        borderRadius: 5,
-        borderWidth: 1,
-        borderColor: "#FFCC00"
-    },
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+    },    
     inputEmail: {
         width: '95%',
-        backgroundColor: '#FFE270',
-        borderWidth: 1,
-        borderColor: '#FFCC00',
+        backgroundColor: '#4a306d',        
         height: 30,
         borderRadius: 5,
         marginVertical: 15,
         justifyContent: 'center',
         alignItems: 'center',
         paddingLeft: 4,
+        color:"#ffffff",
     },
     loginButton:{
-        backgroundColor: colors.primary,
+        backgroundColor: '#FFFBEB',      
         width:"50%",
         height:50,
         borderRadius:5,
         marginBottom: 15,
         justifyContent: 'center',
-        alignItems: 'center',
-        fontFamily: 'LatoRegular',
+        alignItems: 'center',   
     },
     registerButton:{
-        backgroundColor: colors.tertiary,
+        backgroundColor: '#FFFBEB',      
         width:"50%",
         height:30,
         borderRadius:5,
@@ -63,7 +66,7 @@ export default styles = StyleSheet.create({
         margin: 10,
         fontSize: 18,
         fontFamily: 'LatoRegular',
-        color: '#393E41'
+        color: '#ffffff',
     },
     loginButtonTxt:{
         fontFamily: 'LatoRegular',
@@ -71,4 +74,10 @@ export default styles = StyleSheet.create({
         color: '#393E41',   
         fontWeight: '900',
     },
+    subtitle:{
+        margin: 10,
+        fontSize: 15,
+        fontFamily: 'LatoRegular',
+        color: '#ffffff',
+    }
 })

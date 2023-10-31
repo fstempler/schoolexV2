@@ -1,4 +1,4 @@
-import { View, Text, Pressable, Image, TextInput } from 'react-native'
+import { View, Text, Pressable, Image, TextInput, ImageBackground } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { MaterialIcons, Entypo } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker'
@@ -6,6 +6,9 @@ import styles from './Profile.style'
 import { useDispatch, useSelector } from 'react-redux';
 import { setCameraImage } from '../../features/auth/authSlice';
 import { usePostProfileImageMutation } from '../../services/classApi'; 
+import background from '../../../assets/back2.jpg'
+import { clearUser } from '../../features/auth/authSlice';
+import { deleteSession } from '../../db';
 
 const Profile = () => {
 
@@ -46,9 +49,18 @@ const Profile = () => {
       console.log(result)
     }
 
+    const logout = () => {
+      dispatch(clearUser())
+      deleteSession()
+    }
+
 
   return (
+    <ImageBackground source={background} 
+    resizeMode='cover'
+    style={styles.imageBackground}>
     <View style={styles.container}>
+    <View style={styles.profilePicContainer}>
         {image ? <Image 
         source={{
             uri: image,
@@ -66,14 +78,20 @@ const Profile = () => {
     )}
     <View style={styles.picBtnContainer}>
     <Pressable style={styles.cameraButton} onPress={pickImage}>
-        <MaterialIcons name="photo-camera" size={24} color="black" />
-        <Text>  Foto de perfil</Text>
+        <MaterialIcons name="photo-camera" size={24} color="white" />
+        <Text style={styles.textBtn}>  Foto de perfil</Text>
     </Pressable>
     <Pressable style={styles.cameraButton} onPress={confirmImage}>
-        <MaterialIcons name="check" size={24} color="black" />
-        <Text>  Confirmar</Text>
+        <MaterialIcons name="check" size={24} color="white" />
+        <Text style={styles.textBtn}>  Confirmar</Text>
     </Pressable>
     </View>
+    </View>
+
+    <View style={styles.dataMainContainer}>
+    <View style={styles.dataContainer}>
+      <Text style={styles.dataTitle}>Tus datos</Text>     
+    </View>  
     <View style={styles.dataContainer}>
       <Text style={styles.dataText}>Nombre: </Text>
       <TextInput style={styles.input}/>          
@@ -86,7 +104,28 @@ const Profile = () => {
       <Entypo name="pencil" size={24} color="black" />    
     </View>  
 
+    <View style={styles.dataContainer}>
+      <Text style={styles.dataText}>Email:  </Text>
+      <TextInput style={styles.input}/> 
+      <Entypo name="pencil" size={24} color="black" />    
+    </View> 
+
+    <View style={styles.dataContainer}>
+      <Text style={styles.dataText}>Tel:  </Text>
+      <TextInput style={styles.input}/> 
+      <Entypo name="pencil" size={24} color="black" />    
+    </View> 
+    <View style={styles.logoutContainer}>
+      <Pressable onPress={logout}>
+        
+        <Text style={styles.logoutText}>Cerrar sesión  </Text>
+        
+      </Pressable>
     </View>
+    </View>    
+
+    </View>
+    </ImageBackground>
   )
 }
 

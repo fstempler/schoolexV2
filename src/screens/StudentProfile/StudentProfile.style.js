@@ -4,10 +4,26 @@ import { colors } from "../../constants/colors";
 
 export default styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: colors.primary, 
+        flex: 1,        
         display: 'flex',
         alignItems:'left',                
+        backgroundColor: '#ffffff95',
+    },
+    imageBackground:{
+        flex: 1,
+        justifyContent: 'center',
+    },
+    nameContainer:{
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: colors.quinary,        
+    },
+    textName: {
+        color: '#fff',
+        fontSize: 24,
+        padding: 5,
+        fontFamily: 'LatoRegular',
     },
     list: {
         marginTop: 50,                

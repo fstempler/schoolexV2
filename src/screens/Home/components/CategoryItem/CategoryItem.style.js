@@ -12,9 +12,10 @@ export default styles = StyleSheet.create({
         maxWidth: 250,
         height: 'auto',
         minHeight: 60,
+        backgroundColor: colors.quaternary,
     },
     text: {
-        color: colors.quinary,
+        color: '#fff',
         fontFamily: 'LatoRegular',
         fontSize: 20,
         paddingHorizontal: 60,

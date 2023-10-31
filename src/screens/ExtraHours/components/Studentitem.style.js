@@ -10,7 +10,8 @@ export default styles = StyleSheet.create({
         borderBottomColor: colors.quinary,        
         width: '100%',
         alignItems: 'center',
-        justifyContent: 'space-between',        
+        justifyContent: 'space-between',  
+        backgroundColor: '#ffffff95',      
     },
     nameContainer: {
         width: '50%',

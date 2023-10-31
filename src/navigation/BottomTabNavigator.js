@@ -25,7 +25,7 @@ function BottomTabNavigator () {
                 name="StackNavigator" 
                 component={StackNavigator} 
                 options={{tabBarIcon: ({focused}) => (                    
-                    <FontAwesome name="group" size={24} color={focused ? colors.quinary : colors.tertiary} />
+                    <FontAwesome name="group" size={24} color={focused ? colors.quaternary : colors.tertiary} />
                 )
                 }}/> 
 
@@ -34,7 +34,7 @@ function BottomTabNavigator () {
                 name="ExtraHours" 
                 component={ExtraHoursNavigator} 
                 options={{tabBarIcon: ({focused}) => (                                    
-                <MaterialCommunityIcons name="bookshelf" size={30} color={focused ? colors.quinary : colors.tertiary} />
+                <MaterialCommunityIcons name="bookshelf" size={30} color={focused ? colors.quaternary : colors.tertiary} />
                 )
                 }}/>
 
@@ -42,7 +42,7 @@ function BottomTabNavigator () {
                 name="Profile" 
                 component={ProfileNavigator} 
                 options={{tabBarIcon: ({focused}) => (                    
-                    <FontAwesome name="user" size={24} color={focused ? colors.quinary : colors.tertiary} />
+                    <FontAwesome name="user" size={24} color={focused ? colors.quaternary : colors.tertiary} />
                 )
                 }}/>
 
@@ -61,6 +61,6 @@ export default BottomTabNavigator
 
 const styles = StyleSheet.create ({
     tabBar:{
-        backgroundColor: colors.senary,                
+        backgroundColor: colors.quinary,                
     }
 })
