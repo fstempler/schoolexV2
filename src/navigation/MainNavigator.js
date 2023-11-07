@@ -3,8 +3,9 @@ import AuthStackNavigator from './AuthStackNavigator'
 import BottomTabNavigator from './BottomTabNavigator'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchSession } from '../db'
-import { setCameraImage, setUser } from '../features/auth/authSlice'
-import { useGetProfileImageQuery } from '../services/classApi'
+import { setCameraImage, setUser, setUserData } from '../features/auth/authSlice'
+import { useGetProfileImageQuery, useGetUserDataQuery } from '../services/classApi'
+
 
 const MainNavigator = () => {
     
@@ -12,13 +13,20 @@ const MainNavigator = () => {
     const { user, localId } = useSelector(state => state.auth)
     const dispatch = useDispatch()
     const {data, error, isLoading } = useGetProfileImageQuery(localId)
+    const { data: userData, isLoading: isUserDataLoading, isError: isUserDataError } = useGetUserDataQuery(localId);
 
     useEffect(() => {
-        console.log(data)
         if (data) {
             dispatch(setCameraImage(data.image))
         }
     }, [data])
+
+    useEffect(() => {
+        console.log(userData)
+        if (userData) {
+            dispatch(setUserData(userData))
+        }
+    }, [userData])
 
     useEffect(() => {
         ;(async () => {

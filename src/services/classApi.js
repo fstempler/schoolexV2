@@ -26,7 +26,17 @@ export const classApi = createApi({
                     image: image,
                 },
             }),
-        }),   
+        }),  
+        updateProfileData: builder.mutation({
+            query: ({ localId, name, lastName, email, phone }) => ({
+                url: `profileData/${localId}.json`,
+                method: 'PUT',
+                body: { name, lastName, email, phone, }
+            })
+        }), 
+        getUserData: builder.query({
+            query: localId => `profileData/${localId}.json`
+        }),
     }),
 })
 
@@ -36,4 +46,6 @@ export const {
     useGetStudentsByCursoQuery,    
     useGetProfileImageQuery,
     usePostProfileImageMutation,
+    useUpdateProfileDataMutation,
+    useGetUserDataQuery,
 } = classApi

@@ -3,9 +3,8 @@ import React, { useEffect } from 'react';
 import styles from './StudentProfile.style';
 import { Entypo } from '@expo/vector-icons';
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement, updateGrade, initializeGrades } from '../../features/counter/counterSlice';
+import { increment, decrement, initializeGrades } from '../../features/counter/counterSlice';
 import { addItem, selectStudent } from '../../features/specialClass/specialClassSlice';
-import { useGetStudentsByCursoQuery } from '../../services/classApi'
 import background from '../../../assets/back2.jpg'
 
 const StudentProfile = ({ route }) => {
@@ -26,14 +25,7 @@ const StudentProfile = ({ route }) => {
     });
     dispatch(initializeGrades({ grades }));
   }, [dispatch, student.subjects]);
-
-  const handleIncrement = (subjectName) => {
-    dispatch(increment({ subject: subjectName }));
-  };
-
-  const handleDecrement = (subjectName) => {
-    dispatch(decrement({ subject: subjectName }));
-  }; 
+  
 
   return (
     <ImageBackground source={background} 

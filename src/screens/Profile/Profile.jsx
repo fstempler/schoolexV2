@@ -1,22 +1,51 @@
 import { View, Text, Pressable, Image, TextInput, ImageBackground } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { MaterialIcons, Entypo } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker'
 import styles from './Profile.style'
 import { useDispatch, useSelector } from 'react-redux';
-import { setCameraImage } from '../../features/auth/authSlice';
-import { usePostProfileImageMutation } from '../../services/classApi'; 
+import { usePostProfileImageMutation, useUpdateProfileDataMutation, useGetUserDataQuery } from '../../services/classApi'; 
 import background from '../../../assets/back2.jpg'
-import { clearUser } from '../../features/auth/authSlice';
+import { clearUser, setCameraImage, setUserData } from '../../features/auth/authSlice';
 import { deleteSession } from '../../db';
 
 const Profile = () => {
-
-    const image = useSelector(state => state.auth.imageCamera)
+    
     const { localId } = useSelector(state => state.auth)
+    const image = useSelector(state => state.auth.imageCamera)    
+    const { data: userData, isLoading: isUserDataLoading, isError: isUserDataError } = useGetUserDataQuery(localId);
+    console.log('userData:', userData);
+
+
+    
     const [triggerSaveProfileImage, result ] = usePostProfileImageMutation()
     const dispatch = useDispatch()    
+    const [updatedData, setUpdatedData] = useState(null)
+
+    const [name, setName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [email, setEmail] = useState('')
+    const [phone, setPhone] = useState('')
+
+    const [triggerUpdateProfileData, mutationResult] = useUpdateProfileDataMutation();
+
+    const updateProfileData = () => {
+      if (localId) {
+      triggerUpdateProfileData({
+        localId: localId, 
+        name, 
+        lastName,
+        email, 
+        phone, 
+      });
+      
+    } else {
+      console.error("localId no es un valor válido.")
+    }
+  }
     
+
+
     const verifyCameraPermissions = async () => {
       const {granted} = await ImagePicker.requestCameraPermissionsAsync()
       if(!granted) {
@@ -54,6 +83,34 @@ const Profile = () => {
       deleteSession()
     }
 
+    useEffect(() => {
+      if(mutationResult.isSuccess && mutationResult.data) {
+        setUpdatedData(mutationResult.data);
+        setName('');
+        setLastName('');
+        setEmail('');
+        setPhone('');
+      }
+    }, [mutationResult.isSuccess, mutationResult.data]);
+    
+    useEffect(() => {
+      
+    if (isUserDataLoading) {
+      console.log('User Data Loading')
+    }
+
+    if (isUserDataError) {
+      console.log('User Data Error')
+    }
+
+    if (!userData){
+      console.log('No user Data')
+    }
+
+    if (userData) {
+      dispatch(setUserData(userData))
+    }
+    }, [userData, isUserDataLoading, isUserDataError])
 
   return (
     <ImageBackground source={background} 
@@ -76,49 +133,69 @@ const Profile = () => {
         resizeMode='cover'
     />
     )}
-    <View style={styles.picBtnContainer}>
-    <Pressable style={styles.cameraButton} onPress={pickImage}>
-        <MaterialIcons name="photo-camera" size={24} color="white" />
-        <Text style={styles.textBtn}>  Foto de perfil</Text>
-    </Pressable>
-    <Pressable style={styles.cameraButton} onPress={confirmImage}>
-        <MaterialIcons name="check" size={24} color="white" />
-        <Text style={styles.textBtn}>  Confirmar</Text>
-    </Pressable>
-    </View>
+
+      <View style={styles.userDataContainer}>
+        <Text style={styles.userDataText}>Nombre: {userData && userData.name}</Text>
+        <Text style={styles.userDataText}>Apellido: {userData && userData.lastName}</Text>
+        <Text style={styles.userDataText}>Email: {userData && userData.email}</Text>
+        <Text style={styles.userDataText}>Teléfono: {userData && userData.phone}</Text>
+      </View>
+      
     </View>
 
     <View style={styles.dataMainContainer}>
     <View style={styles.dataContainer}>
-      <Text style={styles.dataTitle}>Tus datos</Text>     
-    </View>  
+      <Text style={styles.dataTitle}>Modificar perfil</Text>     
+    </View> 
+    <View style={styles.picBtnContainer}>
+        <Pressable style={styles.cameraButton} onPress={pickImage}>
+            <MaterialIcons name="photo-camera" size={24} color="white" />
+            <Text style={styles.textBtn}>  Foto de perfil</Text>
+        </Pressable>
+        <Pressable style={styles.cameraButton} onPress={confirmImage}>
+            <MaterialIcons name="check" size={24} color="white" />
+            <Text style={styles.textBtn}>  Confirmar</Text>
+        </Pressable>
+      </View> 
     <View style={styles.dataContainer}>
       <Text style={styles.dataText}>Nombre: </Text>
-      <TextInput style={styles.input}/>          
-      <Entypo name="pencil" size={24} color="black" />   
+      <TextInput style={styles.input}
+      value={name}
+      onChangeText={setName}/>           
     </View>  
 
     <View style={styles.dataContainer}>
       <Text style={styles.dataText}>Apellido: </Text>
-      <TextInput style={styles.input}/> 
-      <Entypo name="pencil" size={24} color="black" />    
+      <TextInput style={styles.input}
+      value={lastName}
+      onChangeText={setLastName}/>    
     </View>  
 
     <View style={styles.dataContainer}>
       <Text style={styles.dataText}>Email:  </Text>
-      <TextInput style={styles.input}/> 
-      <Entypo name="pencil" size={24} color="black" />    
+      <TextInput style={styles.input}
+      value={email}
+      onChangeText={setEmail}/>    
     </View> 
 
     <View style={styles.dataContainer}>
       <Text style={styles.dataText}>Tel:  </Text>
-      <TextInput style={styles.input}/> 
-      <Entypo name="pencil" size={24} color="black" />    
+      <TextInput style={styles.input}
+      value={phone}
+      onChangeText={setPhone}/>     
     </View> 
+    
+    <View style={styles.dataContainer}>
+      <Pressable style={styles.saveChangesBtn} onPress={updateProfileData}>
+        <Text style={styles.saveChangesBtnText}>Guardar cambios</Text>
+      </Pressable>         
+    </View> 
+
+    
     <View style={styles.logoutContainer}>
       <Pressable onPress={logout}>
         
-        <Text style={styles.logoutText}>Cerrar sesión  </Text>
+        <Text style={styles.logoutText}>Cerrar sesión</Text>
         
       </Pressable>
     </View>

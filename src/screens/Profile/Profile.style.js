@@ -14,21 +14,26 @@ export default styles = StyleSheet.create({
     profilePicContainer:{
         justifyContent:'center',
         alignItems: 'center',
+        flexDirection: 'row',
+        marginTop: 50,
+        backgroundColor: colors.quinary,
+        width: '100%',
+        padding: 30,
     },
     image: {
-        width: 200,
-        height: 200,
+        width: 120,
+        height: 120,
         borderRadius: 100,
-        borderWidth: 2,
-        borderColor: colors.quinary,
-        marginTop: 80,
+        borderWidth: 0.5,
+        borderColor: '#fff',
     },
     picBtnContainer: {
         flexDirection: 'row',
         gap: 5,
+        justifyContent: 'center',
     },
     cameraButton:{
-        backgroundColor: colors.quinary,
+        backgroundColor: colors.quaternary,
         height: 40,
         padding: 10,
         borderRadius: 5,
@@ -40,19 +45,29 @@ export default styles = StyleSheet.create({
     textBtn: {
         color: '#fff',
     },
+    userDataContainer: {        
+        margin: 5,
+        padding: 10,
+        borderRadius: 5,
+    },
+    userDataText: {
+        color: '#fff',
+        margin: 3,
+        fontFamily: 'LatoRegular',
+    },
     dataContainer: {
-        marginTop: 10,        
+        marginTop: 5,        
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
     },
     input: {        
-        padding: 10,
+        padding: 5,
         borderBottomWidth: 1,
         borderColor: colors.quinary,
         width: '50%',
         fontSize: 15,
-        margin: 10,
+        margin: 5,
         fontFamily: 'LatoRegular',
     },
     dataText: {
@@ -70,10 +85,28 @@ export default styles = StyleSheet.create({
         width: '100%',
         height: '50%',
     }, 
+    saveChangesBtn:{
+        borderWidth: 1,
+        borderRadius: 5,
+        borderColor: colors.primary,
+        backgroundColor: colors.quaternary,
+        padding: 10,                
+        marginTop: 10,
+    },
+    saveChangesBtnText:{
+        color: '#fff',
+    },
     logoutContainer:{                
-        marginTop: 20,        
+        marginTop: 15,        
         flexDirection: 'row',
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'center',        
     },
+    logoutText: {
+        fontFamily: 'LatoRegular',
+        borderWidth: 0.5,
+        padding: 5,
+        textAlign: 'center',
+        borderRadius: 5,
+    }
 })
